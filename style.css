@@ -59,3 +59,15 @@ body {
     box-shadow: 0 0 0 8px #86989B;
     border-radius: var(--border-radius);
 }
+
+.card-highlighted > img {
+    box-shadow: 0 0 0 8px #d0e9ed
+}
+
+.card-slot-highlighted:empty{
+    border-color: #d8ca6b
+}
+
+.card-slot-over:empty{
+    border-color: #eb61d4
+}
