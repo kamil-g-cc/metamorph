@@ -68,6 +68,11 @@ function onDropHandler(evt){
 
         evt.target.appendChild(document.getElementById(id));
     }
+    if(gameWon()){
+        const h1 = document.createElement('h1');
+        h1.innerHTML = 'SUPER! Gratulacje!'
+        document.body.appendChild(h1);
+    }
 }
 
 
@@ -97,4 +102,36 @@ function onDragEnterHandlerForMixedCards(evt){
 
 function onDragOverHandlerForMixedCards(evt){
     evt.preventDefault();
+}
+
+function gameWon(){
+    const frogSlots = document.getElementById('frog-slots').childNodes;
+    const butterflySlots = document.getElementById('butterfly-slots').childNodes;
+    const winningSequenceFrogs = ['f1', 'f2', 'f3', 'f4']
+    const winningSequenceButterflies = ['b1', 'b2', 'b3', 'b4']
+    let i = 0
+    for(const element of frogSlots){
+        if(element.nodeName == "DIV"){
+            if(element.hasChildNodes()){
+                if(winningSequenceFrogs[i++] != element.firstChild.id){
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+    i = 0
+    for(const element of butterflySlots){
+        if(element.nodeName == "DIV"){
+            if(element.hasChildNodes()){
+                if(winningSequenceButterflies[i++] != element.firstChild.id){
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+    }
+    return true;
 }
